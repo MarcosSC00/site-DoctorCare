@@ -1,0 +1,699 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+/*############# GERAL- Desktop ###########*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  font-size: 62.5%;
+  --nav-height: 7.2rem;
+  --brand-green-hover: #00453A;
+  --brand-green: #00856F;
+  --brand-green-light: #DCE9E2;
+  --brand-beige: #FFFAF1;
+  --brand-green-light2: #F7F9F9;
+
+  --gray-headline: #212529;
+  --gray-paragraph: #495057;
+}
+html{
+  scroll-behavior: smooth;
+}
+html, body{
+  width: 100%;
+  height: 100%;
+  font-family: 'DM Sans',sans-serif;
+  text-align: center;
+  line-height: 150%;
+}
+.wrapper{
+  width: min(160rem, 100%);
+  margin-inline: auto;
+  padding-inline: 12.2rem;
+}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: var(--brand-green);
+  font-size: 1.6rem;
+}
+.button{
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  background-color: var(--brand-green);
+  border-radius: 4rem;
+  padding: 1.6rem 3.2rem;
+  width: fit-content;
+  color: var(--brand-beige);
+  gap: 1.6rem;
+  font-weight: 700;
+  transition: background 200ms;
+}
+.button:hover{
+  background: var(--brand-green-hover);
+}
+img{
+  max-width: 100%;
+}
+h1{
+  font-size: 5.2rem;
+  line-height: 130%;
+}
+h2{
+  font-size: 4rem;
+}
+h4{
+  font-size: 1.4rem;
+  color: var(--brand-green);
+}
+p{
+  font-size: 1.8rem;
+  line-height: 150%;
+}
+section{
+  padding-block: 10rem;
+  position: relative;
+}
+
+/*################ NAV ########*/
+#navigation{
+  height: var(--nav-height);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 300;
+  transition: all 550ms ease;
+} 
+#navigation .logo{
+  z-index: 300;
+}
+#navigation .wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 12.2rem;
+  padding-block: 1.6rem;
+  height: 100%;
+}
+#navigation .menu .social-links, #navigation .btn-menu, #navigation .menu ul li a.button-menu{
+  display: none;
+}
+#navigation .btn-menu{
+  flex-direction: column;
+  height: 3rem;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+#navigation .btn-menu .barra{
+  width: 2.5rem;
+  height: 2px;
+  background-color: var(--brand-green);
+  transition: 0.4s;
+}
+#navigation .menu ul{
+  display: flex;
+  flex-direction: row;
+}
+#navigation .menu ul li:nth-child(1),#navigation .menu ul li:nth-child(2), #navigation .menu ul li:nth-child(3){
+  margin-right: 3.2rem;
+}
+#navigation .menu ul#atalhos li a::after{
+  content: '';
+  display: block;
+  position: relative;
+  top: 2.4rem;
+  height: 2px;
+  width: 0;
+  background-color: var(--brand-green);
+  transition: width 300ms;
+  box-shadow: 1px 1px 5px #b2b4b6;
+}
+#navigation.scroll .menu ul#atalhos li a::after{
+  background-color: var(--brand-green-light2);
+}
+#navigation .menu ul#atalhos li a:hover::after{
+  width: 100%;
+}
+#navigation .menu ul#atalhos li a.button:hover:after{
+  width: 0;
+}
+#navigation .menu ul#atalhos li a.underlineSection::after{
+  width: 100%;
+}
+/*############# menu-expanded ###############*/
+.change #b1{
+  transform: rotate(-45deg) translate(-6px, 5px);
+}
+.change #b2{
+  transform: rotate(45deg);
+}
+.change #b3{
+  opacity: 0;
+  visibility: hidden;
+}
+body.menu-expanded > :not(nav){
+  display: none;
+}
+body.menu-expanded #navigation .menu{
+  display: none;
+  position: absolute;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--brand-green);
+  padding-bottom: 30rem;
+  padding-top: calc(var(--nav-height) + 7rem);
+}
+body.menu-expanded #navigation .menu ul#atalhos{
+  display: flex;
+  flex-direction: column;
+  gap: 4.8rem;
+  padding-bottom: 8rem;
+}
+body.menu-expanded #navigation .menu ul li a{
+  color: var(--brand-beige);
+  font-size: 2.4rem;
+}
+/*####### NAV ON SCROLL #####*/
+
+#navigation.scroll .btn-menu .barra{
+  background-color: var(--brand-beige);
+}
+#navigation.scroll{
+  background-color: var(--brand-green);
+}
+#navigation.scroll .menu a{
+  color: var(--brand-beige);
+}
+#navigation.scroll .logo path, body.menu-expanded #navigation .logo path{
+  fill: white;
+}
+
+#navigation.scroll .button{
+  border: 1px solid white;
+}
+/*############## HOME ################*/
+#home{
+  padding: 0;
+}
+#home::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 12rem;
+  background-color: var(--brand-green-light);
+  z-index: -1;
+}
+#home .wrapper{
+  display: grid;
+  grid-template-columns: 60% 40%;
+  align-items: center;
+  justify-items: center;
+}
+#home .home-img{
+  margin-top: 8rem;
+  max-width: 42rem;
+  max-height: 54.7rem;
+}
+#home .home-img img{
+  position: relative;
+  object-position: 0 3rem;
+  z-index: 2;
+  top: 1rem
+}
+
+#home header{
+  padding-top: calc(var(--nav-height) + 8.7rem);
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  max-width: 63rem;
+  justify-self: flex-start;
+}
+#home header h1{
+  padding: 1.7rem 0 2.3rem  0;
+}
+#home header p{
+  padding-bottom: 3.2rem;
+}
+#home .stats{
+  grid-area: 2/1/2/3;
+  display:flex;
+  flex-direction: row;
+  background-color: var(--brand-beige);
+  padding-block: 6rem;
+  padding-inline: 12rem;
+  gap:10rem;
+  align-items: center;
+  width: 100%;
+  z-index: 3;
+  border: 1px solid var(--brand-green-light);
+  border-radius: 0.5rem;
+  justify-content: space-between;
+}
+#home .stats h3{
+  font-size: 4.8rem;
+  line-height: 150%;
+  font-weight: 700;
+}
+#home .stats p{
+  color: var(--brand-green);
+}
+#home .stats .divisao-stat{
+  width: 1px;
+  height: 8.3rem;
+  background-color: var(--brand-green);
+}
+
+/*############ Services ############*/
+#services::before{
+  content: "";
+  position: absolute;
+  top: -12rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--brand-green-light2);
+  z-index: -1;
+}
+#services header{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6.3rem;
+  width: 43%;
+  margin-inline: auto;
+}
+#services header h2{
+  line-height: 120%;
+}
+#services header h4{
+  margin-top: 6rem;
+  margin-bottom: 1.7rem;
+}
+#services .content{
+  display: flex;
+  justify-content: center;
+}
+#services .cards{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+}
+#services .cards .card h3{
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+#services .cards .card p{
+  font-size: 1.6rem;
+}
+#services .cards .card{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 1.8rem;
+  padding: 2.4rem;
+  border: 1px solid var(--brand-green-light);
+  border-radius: 0.5rem;
+  background-color: #ffff;
+}
+
+/*############ Sobre Nos ###########*/
+#about{
+  background-color: var(--brand-beige);
+}
+#about .wrapper{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 5.7rem;
+  align-items: center;
+}
+#about .img-sobre-nos{
+  max-width: 48rem;
+  max-height: 41.6rem;
+}
+#about .txt-sobre-nos{
+  text-align: left;
+}
+#about header h2{
+  margin: 1rem 0 2.4rem 0;
+  line-height: 120%;
+  width: 75%;
+}
+#about header p{
+  text-align: justify;
+}
+/*################## Contact #############*/
+
+#contact .wrapper{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14.1rem;
+  align-items: center;
+}
+#contact .img-contact{
+  max-width: 57.5rem;
+}
+#contact .content-contact{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  max-width: 40.4rem;
+}
+#contact .endereco{
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  padding: 4rem 0 4.2rem 0;
+}
+#contact .content-contact h2{
+  line-height: 120%;
+}
+
+/*################### footer #################*/
+
+footer{
+  background-color: var(--brand-green);
+  color: var(--brand-beige);
+  padding-block: 8rem;
+}
+footer .wrapper .content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer .copyright{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+footer .social-links ul{
+  display: flex;
+}
+footer .copyright > :nth-child(2){
+  padding: 2.4rem 0 1.5rem 0;
+}
+footer .social-links ul{
+  display: flex;
+  flex-direction: row;
+  gap: 3.2rem;
+}
+footer .logo svg{
+  height: 3.3rem;
+  width: 25.3rem;
+}
+footer .logo path{
+  fill: white
+}
+/*######################*/
+
+#backToTopButton{
+  visibility: hidden;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  transform: translateY(100%);
+  transition: 300ms;
+  z-index: 200;
+}
+#backToTopButton.show{
+  visibility: visible;
+  transform: translateY(0);
+}
+#backToTopButton svg circle{
+  fill: #616161;
+}
+
+@media screen and (min-width: 250px) and (max-width: 768px){
+  h1{
+    font-size: 3.4rem;
+    line-height: 130%;
+  }
+  h2{
+    font-size: 3rem;
+  }
+  h3{
+    font-size: 2.4rem;
+    line-height: 150%;
+  }
+  p{
+    font-size: 1.6rem;
+  }
+  .wrapper, #navigation .wrapper{
+    width: 100%;
+    padding-inline: 2.4rem;
+  }
+
+  /*############## Nav #######*/
+
+  #navigation .menu, #navigation a.button{
+    display: none;
+  }
+  body.menu-expanded #navigation .menu, body.menu-expanded #navigation .menu .social-links,  #navigation .btn-menu{
+    display: flex;
+  }
+
+  body.menu-expanded #navigation .menu .social-links{
+    margin-inline: auto;
+  }
+  #navigation .menu ul li a.button.button-menu{
+    display: flex;
+    margin-inline: auto;
+    column-gap: normal;
+    font-size: 1.8rem;
+    background-color: white;
+    color: var(--brand-green);
+    border: none;
+  }
+  #navigation .menu ul{
+    gap: 4.8rem;
+    padding-bottom: 4.8rem;
+  }
+  body.menu-expanded #navigation .menu{
+    padding-inline: 5rem;
+  }
+  #navigation .menu ul#atalhos > :not(:nth-child(5)){
+    width: fit-content;
+    margin-inline: auto;
+  }
+  body.menu-expanded #navigation .barra{
+    background-color: var(--brand-beige);
+  }
+  body.menu-expanded #navigation .btn-menu{
+    z-index: 200;
+  }
+  body.menu-expanded #navigation .menu ul#atalhos li a::after{
+    height: 1px;
+    top: 1rem;
+    background-color: var(--brand-beige);
+  }
+  body.menu-expanded #navigation .menu ul#atalhos li a.underlineSection::after{
+    width: 0;
+  }
+/*######### Home #########*/
+  #home::before{
+    bottom: 45rem;
+  }
+  #home .wrapper{
+    grid-template-columns: 1fr;
+  }
+  #home .txt-home{
+    grid-area: 1/1/1/3;text-align: center;
+  }
+  #home .home-img{
+    grid-area: 2/1/2/3;
+    margin-top: 3.3rem;
+  }
+  #home .stats{
+    grid-area: 3/1/3/3;
+    flex-direction: column;
+    gap: 6rem;
+    padding-inline: 7.2rem;
+  }
+  #home .stats .divisao-stat{
+    display: none;
+  }
+  #home a.button{
+    margin-inline: auto;
+  }
+
+  /*########## services ######*/
+
+  #services::before{
+    top: -45rem;
+  }
+  #services header{
+    margin: 0;
+    width: 100%;
+    margin-bottom: 6rem;
+  }
+  #services header h4{
+    margin-top: 0;
+  }
+  #services .cards{
+    grid-template-columns: 1fr;
+  }
+  /*######### sobre #########*/
+  #about .wrapper{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  #about .txt-sobre-nos h2{
+    margin-top: 1.6rem;
+  }
+  #about .txt-sobre-nos p{
+    text-align: justify;
+    margin: 2.4rem 0 6rem 0;
+  }
+  /*############## contact ##*/
+
+  #contact .wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    align-items: flex-start;
+  }
+  #contact .endereco{
+    padding-block: 3.2rem;
+  }
+  #contact .content-contact{
+    max-width: 100%;
+  }
+  #contact .img-contact{
+    margin-inline: auto;
+  }
+
+  /*######### footer #######*/
+
+  footer .wrapper .content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  footer .copyright > :nth-child(2){
+    padding-bottom: 1.2rem;
+  }
+  footer .social-links{
+    padding-top: 3.2rem;
+  }
+}
+@media  screen and (min-width: 768px) and (max-width: 1252px) {
+
+  .wrapper, #navigation .wrapper{
+    width: 90%;
+    padding-inline: 3rem;
+  }
+  
+  #navigation .menu, #navigation a.button{
+    display: none;
+  }
+  #navigation .btn-menu{
+    display: flex;
+  }
+  body.menu-expanded #navigation .menu, body.menu-expanded #navigation .menu .social-links, #navigation .btn-menu{
+    display: flex;
+  }
+  #navigation .menu ul li a.button.button-menu{
+    display: flex;
+    margin-inline: auto;
+    column-gap: normal;
+    font-size: 1.8rem;
+    background-color: white;
+    color: var(--brand-green);
+    border: none;
+  }  
+  #navigation .menu ul{
+    gap: 4.8rem;
+    padding-bottom: 4.8rem;
+  }
+  body.menu-expanded #navigation .barra{
+    background-color: var(--brand-beige);
+  }
+  body.menu-expanded #navigation .menu ul#atalhos li a::after{
+    height: 1px;
+    top: 1rem;
+    background-color: var(--brand-beige);
+  }
+  
+  body.menu-expanded #navigation .menu .social-links{
+    margin-inline: auto;
+  }
+  body.menu-expanded #navigation .menu ul#atalhos li a.underlineSection::after{
+    width: 0;
+  }
+  #navigation .menu ul#atalhos > :not(.btn){
+    width: fit-content;
+    margin-inline: auto;
+  }
+  /*############### home #################*/
+  #home .wrapper{
+    grid-template-columns: 1fr;
+  }
+  #home .txt-home{
+    grid-area: 1/1/1/3;text-align: center;
+    margin-inline: auto;
+  }
+  #home .home-img{
+    grid-area: 2/1/2/3;
+    margin-top: 3.3rem;
+  }
+  #home .stats{
+    grid-area: 3/1/3/3;
+    flex-direction: column;
+    gap: 6rem;
+    padding-inline: 7.2rem;
+  }
+  #home .stats .divisao-stat{
+    display: none;
+  }
+  #home a.button{
+    margin-inline: auto;
+  }
+
+  /*########### services ##############*/
+
+  #services header{
+    width: 80%;
+  }
+  #services .cards{
+    grid-template-columns: 1fr 1fr;
+  }
+  #services .cards h3{
+    line-height: 150%;
+  }
+  /*############ about #############*/
+  #about .wrapper{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  #about .txt-sobre-nos p{
+    text-align: justify;
+    padding-bottom: 6rem;
+  }
+
+  /*########### contato ##############*/
+
+  #contact .wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #contact .img-contact{
+    margin-inline: auto;
+  }
+  #contact .content-contact{
+    max-width: 100%;
+  }
+}
