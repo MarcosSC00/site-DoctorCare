@@ -62,5 +62,6 @@ function toggleMenu() {
 }
 
 function closeMenu() {
+  changeMenu()
   document.body.classList.remove('menu-expanded')
 }
